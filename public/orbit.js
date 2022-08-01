@@ -25,7 +25,7 @@ function setupOrbit () {
     speedVertical = 1;
 }
 
-function updateOrbit (zoom) {
+function updateOrbit () {
     if (mouseIsPressed && mouseButton == CENTER) {
         phi = modArc(phi + -1*speedVertical*map(movedY, -height, height, -PI, PI));
         theta = modArc(theta + -1*speedHorizontal*sign*map(movedX, -width, width, -PI, PI));
@@ -36,12 +36,11 @@ function updateOrbit (zoom) {
         0, 0, 0,
         0, 0, 1*sign
     );
-    // reflete em relação ao plano Oxy (nega o z)
+    // Reflete em relação ao plano Oxy (nega o z)
     applyMatrix(
         1, 0, 0, 0,
         0, 1, 0, 0,
         0, 0, -1, 0,
         0, 0, 0, 1
     );
-    scale(zoom);
 }
